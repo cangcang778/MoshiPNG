@@ -39,6 +39,8 @@ public static class MoshiHelpButton
         // 物体/路径相关
         { "物体阵列工具", "Moshi_GOArray.md" },
         { "路径工具", "Moshi_PathTool.md" },
+        { "路径阵列循环", "Moshi_PathArray.md" },
+        { "路径阵列动画烘焙", "Moshi_PathArrayBaker.md" },
         // Timeline相关
         { "TL批量导入", "Moshi_TLBatch.md" },
         { "TL增强", "Moshi_TLEnhance.md" },
