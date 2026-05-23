@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -155,8 +156,23 @@ public class Moshi_VolumeCN : EditorWindow
 
     private VolumeProfile targetProfile;
     private Volume targetVolume;
+    private VolumeProfile activeWorkingProfile; // 当前实际使用的 profile（含自动检测），用于 SetDirty
     private Vector2 scrollPos;
     private const float LabelWidth = 200f;
+
+    /// <summary>
+    /// 缓存每个 VolumeComponent 类型的反射元数据，避免每帧重复反射
+    /// </summary>
+    private class FieldMeta
+    {
+        public FieldInfo Field;
+        public string CnName;
+        public Type ValueType;
+        /// <summary>VolumeParameter 包装类型（如 FloatParameter、MinFloatParameter 等）</summary>
+        public Type ParameterType;
+    }
+
+    private static readonly Dictionary<Type, List<FieldMeta>> FieldCache = new Dictionary<Type, List<FieldMeta>>();
 
     [MenuItem("工具/Moshi/Volume 中文本地化窗口", false, 100)]
     public static void ShowWindow()
@@ -193,14 +209,21 @@ public class Moshi_VolumeCN : EditorWindow
             activeProfile = targetVolume.sharedProfile;
         }
 
-        // 如果没有指定，自动检测场景中的 Volume
+        // 如果没有指定，自动检测场景中的 Volume（仅首次，后续用缓存避免每帧 FindObjectOfType）
         if (activeProfile == null && targetVolume == null)
         {
-            Volume sceneVolume = FindObjectOfType<Volume>();
-            if (sceneVolume != null && sceneVolume.sharedProfile != null)
+            if (activeWorkingProfile != null)
             {
-                activeProfile = sceneVolume.sharedProfile;
-                EditorGUILayout.HelpBox($"已自动检测场景 Volume: {sceneVolume.name}", MessageType.Info);
+                activeProfile = activeWorkingProfile;
+            }
+            else
+            {
+                Volume sceneVolume = FindObjectOfType<Volume>();
+                if (sceneVolume != null && sceneVolume.sharedProfile != null)
+                {
+                    activeProfile = sceneVolume.sharedProfile;
+                    EditorGUILayout.HelpBox($"已自动检测场景 Volume: {sceneVolume.name}", MessageType.Info);
+                }
             }
         }
 
@@ -210,6 +233,7 @@ public class Moshi_VolumeCN : EditorWindow
             return;
         }
 
+        activeWorkingProfile = activeProfile;
         EditorGUILayout.Space(5);
         EditorGUILayout.LabelField($"当前: {activeProfile.name}", EditorStyles.boldLabel);
 
@@ -232,16 +256,29 @@ public class Moshi_VolumeCN : EditorWindow
 
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            // 标题行: toggle + 中文名
+            // 组件级 active 开关（大开关）
             EditorGUILayout.BeginHorizontal();
-            comp.active = EditorGUILayout.Toggle(comp.active, GUILayout.Width(16));
-            EditorGUILayout.LabelField($"<b>{cnName}</b> <size=10>({typeName})</size>", 
-                new GUIStyle(EditorStyles.label) { richText = true, fontStyle = FontStyle.Bold });
+            EditorGUI.BeginChangeCheck();
+            bool newActive = EditorGUILayout.ToggleLeft(
+                $"<b>{cnName}</b> <size=10>({typeName})</size>",
+                comp.active, new GUIStyle(EditorStyles.label) { richText = true, fontStyle = FontStyle.Bold });
+            if (EditorGUI.EndChangeCheck())
+            {
+                comp.active = newActive;
+                EditorUtility.SetDirty(activeWorkingProfile);
+                EditorUtility.SetDirty(comp);
+                RepaintUnityInspector();
+            }
             EditorGUILayout.EndHorizontal();
 
             if (comp.active)
             {
-                DrawComponentParameters(comp);
+                bool changed = DrawComponentParameters(comp);
+                if (changed)
+                {
+                    EditorUtility.SetDirty(activeWorkingProfile);
+                    RepaintUnityInspector();
+                }
             }
 
             EditorGUILayout.EndVertical();
@@ -251,73 +288,126 @@ public class Moshi_VolumeCN : EditorWindow
         EditorGUILayout.EndScrollView();
     }
 
-    private void DrawComponentParameters(VolumeComponent comp)
+    private bool DrawComponentParameters(VolumeComponent comp)
     {
         EditorGUI.indentLevel++;
 
-        var fields = comp.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+        var so = new SerializedObject(comp);
+        so.Update();
 
-        foreach (var field in fields)
+        var metas = GetOrCacheFieldMetas(comp);
+
+        foreach (var meta in metas)
         {
-            // 跳过非 public 字段 (但 SerializeField 的不跳过)
-            if (!field.IsPublic && field.GetCustomAttribute<SerializeField>() == null)
-                continue;
+            var sp = so.FindProperty(meta.Field.Name);
+            if (sp == null) continue;
 
-            // 跳过 active 字段
-            if (field.Name == "active") continue;
+            var overrideProp = sp.FindPropertyRelative("m_OverrideState") ?? sp.FindPropertyRelative("overrideState");
+            var valueProp = sp.FindPropertyRelative("m_Value") ?? sp.FindPropertyRelative("value");
 
-            // 尝试获取 VolumeParameter 基类值
-            object fieldValue = field.GetValue(comp);
-            if (fieldValue == null) continue;
+            if (overrideProp == null || valueProp == null) continue;
 
-            Type fieldType = fieldValue.GetType();
+            bool hasOverride = overrideProp.boolValue;
 
-            // 检查是否是 VolumeParameter<> 类型
-            bool hasOverride = GetOverrideState(fieldValue);
-            bool hadOverride = hasOverride;
-            Type valueType = GetVolumeParameterValueType(fieldType);
-
-            if (valueType == null) continue;
-
-            string cnParam = GetCNName(ParamNameCN, field.Name, field.Name);
-
-            // 只显示有 override 或常用参数（减少视觉噪音）
             EditorGUILayout.BeginHorizontal();
 
-            // Override 开关
-            hasOverride = EditorGUILayout.Toggle(hasOverride, GUILayout.Width(16));
-
-            if (hasOverride != hadOverride)
+            EditorGUI.BeginChangeCheck();
+            bool newOverride = EditorGUILayout.ToggleLeft(meta.CnName, hasOverride, GUILayout.Width(LabelWidth));
+            if (EditorGUI.EndChangeCheck())
             {
-                SetOverrideState(fieldValue, hasOverride);
-                EditorUtility.SetDirty(targetProfile ?? targetVolume?.sharedProfile);
+                overrideProp.boolValue = newOverride;
             }
 
-            if (!hasOverride)
+            using (new EditorGUI.DisabledGroupScope(!newOverride))
             {
-                GUI.enabled = false;
+                EditorGUILayout.PropertyField(valueProp, GUIContent.none, true);
             }
 
-            // 参数名（中文）
-            EditorGUILayout.LabelField(cnParam, GUILayout.Width(LabelWidth - 80));
-
-            // 参数值
-            object currentVal = GetOverrideValue(fieldValue, valueType);
-            object newVal = DrawField(valueType, currentVal);
-            if (newVal != null && !newVal.Equals(currentVal))
-            {
-                SetOverrideValue(fieldValue, valueType, newVal);
-                EditorUtility.SetDirty(targetProfile ?? targetVolume?.sharedProfile);
-            }
-
-            GUI.enabled = true;
             EditorGUILayout.EndHorizontal();
         }
 
+        bool changed = so.hasModifiedProperties;
+        if (changed)
+        {
+            so.ApplyModifiedProperties();
+            // 强制立即刷新：标记 VolumeComponent 脏，触发原生 Inspector 更新
+            EditorUtility.SetDirty(comp);
+            // 通知 Unity Inspector 窗口重绘
+            EditorApplication.RepaintHierarchyWindow();
+            EditorApplication.RepaintProjectWindow();
+        }
+
         EditorGUI.indentLevel--;
+        return changed;
+    }
+
+    /// <summary>
+    /// 强制刷新 Unity 原生 Inspector + SceneView，使参数变更即时可见
+    /// </summary>
+    private static void RepaintUnityInspector()
+    {
+        // 刷新所有已打开的 Inspector 窗口
+        var inspectorType = typeof(Editor).Assembly.GetType("UnityEditor.InspectorWindow");
+        if (inspectorType != null)
+        {
+            foreach (var win in Resources.FindObjectsOfTypeAll(inspectorType))
+                ((EditorWindow)win).Repaint();
+        }
+        // 刷新所有 SceneView（Volume 效果即时可见）
+        foreach (var sceneView in Resources.FindObjectsOfTypeAll<SceneView>())
+            sceneView.Repaint();
+    }
+
+    /// <summary>
+    /// 获取或构建类型的反射元数据缓存
+    /// </summary>
+    private List<FieldMeta> GetOrCacheFieldMetas(VolumeComponent comp)
+    {
+        Type compType = comp.GetType();
+        if (FieldCache.TryGetValue(compType, out var cached))
+            return cached;
+
+        var metas = new List<FieldMeta>();
+        var fields = compType.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+
+        foreach (var field in fields)
+        {
+            if (field.Name == "active") continue;
+            if (!field.IsPublic && field.GetCustomAttribute<SerializeField>() == null)
+                continue;
+
+            try
+            {
+                object fieldValue = field.GetValue(comp);
+                if (fieldValue == null) continue;
+
+                Type valueType = GetVolumeParameterValueType(fieldValue.GetType());
+                if (valueType == null) continue;
+
+                metas.Add(new FieldMeta
+                {
+                    Field = field,
+                    CnName = GetCNName(ParamNameCN, field.Name, field.Name),
+                    ValueType = valueType,
+                    ParameterType = fieldValue.GetType()
+                });
+            }
+            catch
+            {
+                // 忽略无法反射的字段
+            }
+        }
+
+        FieldCache[compType] = metas;
+        return metas;
     }
 
     #region Reflection Helpers
+
+    /// <summary>缓存每个 VolumeParameter 类型的 overrideState PropertyInfo</summary>
+    private static readonly Dictionary<Type, PropertyInfo> OverrideStatePropCache = new Dictionary<Type, PropertyInfo>();
+    /// <summary>缓存每个 VolumeParameter 类型的 value PropertyInfo</summary>
+    private static readonly Dictionary<Type, PropertyInfo> ValuePropCache = new Dictionary<Type, PropertyInfo>();
 
     private string GetCNName(Dictionary<string, string> dict, string key, string fallback)
     {
@@ -349,37 +439,64 @@ public class Moshi_VolumeCN : EditorWindow
         return null;
     }
 
+    private PropertyInfo GetOverrideStateProp(Type paramType)
+    {
+        if (!OverrideStatePropCache.TryGetValue(paramType, out var prop))
+        {
+            prop = paramType.GetProperty("overrideState", BindingFlags.Public | BindingFlags.Instance);
+            OverrideStatePropCache[paramType] = prop;
+        }
+        return prop;
+    }
+
+    private PropertyInfo GetValueProp(Type paramType)
+    {
+        if (!ValuePropCache.TryGetValue(paramType, out var prop))
+        {
+            prop = paramType.GetProperty("value", BindingFlags.Public | BindingFlags.Instance);
+            ValuePropCache[paramType] = prop;
+        }
+        return prop;
+    }
+
     private bool GetOverrideState(object volumeParameter)
     {
         if (volumeParameter == null) return false;
-        var prop = volumeParameter.GetType().GetProperty("overrideState", BindingFlags.Public | BindingFlags.Instance);
+        var prop = GetOverrideStateProp(volumeParameter.GetType());
         return prop != null && (bool)prop.GetValue(volumeParameter);
     }
 
     private void SetOverrideState(object volumeParameter, bool state)
     {
-        var prop = volumeParameter.GetType().GetProperty("overrideState", BindingFlags.Public | BindingFlags.Instance);
-        prop?.SetValue(volumeParameter, state);
+        GetOverrideStateProp(volumeParameter?.GetType())?.SetValue(volumeParameter, state);
     }
 
     private object GetOverrideValue(object volumeParameter, Type valueType)
     {
-        var prop = volumeParameter.GetType().GetProperty("value", BindingFlags.Public | BindingFlags.Instance);
-        return prop?.GetValue(volumeParameter);
+        return GetValueProp(volumeParameter?.GetType())?.GetValue(volumeParameter);
     }
 
     private void SetOverrideValue(object volumeParameter, Type valueType, object newValue)
     {
-        var prop = volumeParameter.GetType().GetProperty("value", BindingFlags.Public | BindingFlags.Instance);
-        prop?.SetValue(volumeParameter, newValue);
+        GetValueProp(volumeParameter?.GetType())?.SetValue(volumeParameter, newValue);
     }
 
-    private object DrawField(Type valueType, object currentValue)
+    private object DrawField(Type valueType, Type paramType, object currentValue)
     {
         if (valueType == typeof(float))
+        {
+            float min, max;
+            if (TryGetParamRange(paramType, out min, out max))
+                return EditorGUILayout.Slider((float)(currentValue ?? 0f), min, max);
             return EditorGUILayout.FloatField((float)(currentValue ?? 0f));
+        }
         if (valueType == typeof(int))
+        {
+            float min, max;
+            if (TryGetParamRange(paramType, out min, out max))
+                return EditorGUILayout.IntSlider((int)(currentValue ?? 0), (int)min, (int)max);
             return EditorGUILayout.IntField((int)(currentValue ?? 0));
+        }
         if (valueType == typeof(bool))
             return EditorGUILayout.Toggle((bool)(currentValue ?? false));
         if (valueType == typeof(Color))
@@ -396,10 +513,50 @@ public class Moshi_VolumeCN : EditorWindow
             return (LayerMask)EditorGUILayout.LayerField((LayerMask)(currentValue ?? 0));
         if (valueType.IsEnum)
             return EditorGUILayout.EnumPopup((Enum)(currentValue ?? Activator.CreateInstance(valueType)));
+        if (valueType == typeof(AnimationCurve))
+            return EditorGUILayout.CurveField((AnimationCurve)(currentValue ?? AnimationCurve.Linear(0, 0, 1, 1)));
 
-        // 未支持的类型：只读显示
+        // 未支持的类型：尝试用 ObjectField 兜底（适用于 TextureCurve 等 ScriptableObject 派生类型）
+        if (valueType.IsClass || valueType.IsValueType)
+        {
+            if (typeof(UnityEngine.Object).IsAssignableFrom(valueType))
+                return EditorGUILayout.ObjectField((UnityEngine.Object)currentValue, valueType, false);
+            // 其他值类型 → 尝试字符串转换
+            var str = EditorGUILayout.TextField(currentValue?.ToString() ?? "");
+            try { return Convert.ChangeType(str, valueType); } catch { return currentValue; }
+        }
+
         EditorGUILayout.LabelField(currentValue?.ToString() ?? "null", GUILayout.MaxWidth(300));
         return currentValue;
+    }
+
+    /// <summary>
+    /// 尝试从 VolumeParameter 包装类型读取 min/max 约束
+    /// </summary>
+    private bool TryGetParamRange(Type paramType, out float min, out float max)
+    {
+        min = float.MinValue;
+        max = float.MaxValue;
+        if (paramType == null) return false;
+
+        // 检查类型名是否包含 Clamped / Min / Range 等标识
+        // 优先尝试读取 "min" 和 "max" 属性
+        var minProp = paramType.GetProperty("min", BindingFlags.Public | BindingFlags.Instance);
+        var maxProp = paramType.GetProperty("max", BindingFlags.Public | BindingFlags.Instance);
+
+        if (minProp != null && maxProp != null)
+        {
+            try
+            {
+                min = Convert.ToSingle(minProp.GetValue(null)); // static prop like ClampedFloatParameter.min
+                max = Convert.ToSingle(maxProp.GetValue(null));
+                return true;
+            }
+            catch { }
+        }
+
+        // 尝试实例属性
+        return false;
     }
 
     #endregion

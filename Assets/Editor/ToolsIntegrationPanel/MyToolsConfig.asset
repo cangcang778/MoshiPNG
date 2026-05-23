@@ -162,6 +162,12 @@ MonoBehaviour:
     category: "\u8DEF\u5F84\u5DE5\u5177"
     showInQuickAccess: 1
     bindingKey: path_importer
+  - toolName: Volu
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/Volume
+      \u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3\" \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
+    category: "\u5DE5\u5177 / Moshi"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177MoshiVolume\u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3"
   quickAccessButtonMinWidth: 90
   quickAccessButtonMinHeight: 20
   quickAccessButtonMaxWidth: 90
