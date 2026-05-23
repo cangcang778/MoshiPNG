@@ -15,6 +15,7 @@ namespace Moshi.PathTool.Editor
 
         #region 菜单项
 
+        [Tool("path_importer", "路径导入器", "从FBX/CSV/JSON导入3D路径数据", "路径工具")]
         [MenuItem(MENU_ROOT + "路径导入器", false, 0)]
         public static void OpenPathImporter()
         {

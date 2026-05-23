@@ -157,6 +157,11 @@ MonoBehaviour:
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
     bindingKey: "\u5DE5\u5177Moshi\u9010\u5E27\u6E32\u67D3"
+  - toolName: "\u8DEF\u5F84\u5BFC\u5165"
+    toolDescription: "\u4ECEFBX/CSV/JSON\u5BFC\u51653D\u8DEF\u5F84\u6570\u636E"
+    category: "\u8DEF\u5F84\u5DE5\u5177"
+    showInQuickAccess: 1
+    bindingKey: path_importer
   quickAccessButtonMinWidth: 90
   quickAccessButtonMinHeight: 20
   quickAccessButtonMaxWidth: 90
