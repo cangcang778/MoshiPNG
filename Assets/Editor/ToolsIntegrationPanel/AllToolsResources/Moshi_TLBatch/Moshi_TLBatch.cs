@@ -346,7 +346,7 @@ public class Moshi_TLBatch : EditorWindow
         if (timelineAsset == null) return;
 
         // 记录Undo
-        var tracksToRecord = selectedClips.Select(c => c.GetParentTrack() as Object).Distinct().ToArray();
+        var tracksToRecord = GetTracksToRecord(selectedClips);
         Undo.RecordObjects(tracksToRecord, "批量修改Clip");
 
         // 如果启用了修改时长，先修改时长
@@ -1813,6 +1813,59 @@ public class Moshi_TLBatch : EditorWindow
         }
 
         return clips;
+    }
+
+    /// <summary>
+    /// 获取需要记录 Undo 的轨道对象（兼容 Timeline 1.4.x）
+    /// </summary>
+    private Object[] GetTracksToRecord(List<TimelineClip> clips)
+    {
+        return clips
+            .Select(GetParentTrack)
+            .Where(track => track != null)
+            .Distinct()
+            .Cast<Object>()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// 获取 Clip 所属轨道（兼容 Timeline 1.4.x）
+    /// </summary>
+    private TrackAsset GetParentTrack(TimelineClip clip)
+    {
+        if (clip == null) return null;
+
+        var timelineAsset = TimelineEditor.inspectedAsset;
+        if (timelineAsset == null) return null;
+
+        foreach (var track in timelineAsset.GetRootTracks())
+        {
+            var parentTrack = FindParentTrackRecursive(track, clip);
+            if (parentTrack != null) return parentTrack;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// 递归查找 Clip 所属轨道
+    /// </summary>
+    private TrackAsset FindParentTrackRecursive(TrackAsset track, TimelineClip clip)
+    {
+        if (track == null) return null;
+
+        foreach (var trackClip in track.GetClips())
+        {
+            if (ReferenceEquals(trackClip, clip)) return track;
+        }
+
+        foreach (var childTrack in track.GetChildTracks())
+        {
+            var parentTrack = FindParentTrackRecursive(childTrack, clip);
+            if (parentTrack != null) return parentTrack;
+        }
+
+        return null;
     }
 
     #endregion

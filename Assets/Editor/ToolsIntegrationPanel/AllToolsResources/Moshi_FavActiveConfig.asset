@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Moshi_FavActiveConfig
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::Moshi_FavActiveConfig
+  entries:
+  - displayName: PanelResult_3p
+    scenePath: Assets/CommonRes/ArtistTemplate/ForEffect/Test_FX_yejun/CommonEditorUI_yejun.unity
+    gameObjectPath: UIRoot/RootCanvas/MiddlePanel/MenuLayer/PanelResult_3p
+    globalObjectId: GlobalObjectId_V1-2-c94a7b4b407347738b719d39c6e63c05-6657768383116526303-1663880237
+    runtimeInstanceId: -345778
+  - displayName: O_ResultScene_3p
+    scenePath: Assets/CommonRes/ArtistTemplate/ForEffect/Test_FX_yejun/CommonEditorUI_yejun.unity
+    gameObjectPath: O_ResultScene_3p
+    globalObjectId: GlobalObjectId_V1-2-c94a7b4b407347738b719d39c6e63c05-51926179642056600-1283803630
+    runtimeInstanceId: -345286

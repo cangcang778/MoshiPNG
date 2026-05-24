@@ -200,7 +200,7 @@ public static class Moshi_TLEnhance
         double playheadTime = GetPlayheadTime();
         if (playheadTime < 0) return false;
         
-        Undo.RecordObjects(clips.Select(c => c.GetParentTrack() as Object).ToArray(), "移动Clip入点到播放头");
+        Undo.RecordObjects(GetTracksToRecord(clips), "移动Clip入点到播放头");
         
         foreach (var clip in clips)
         {
@@ -223,7 +223,7 @@ public static class Moshi_TLEnhance
         double playheadTime = GetPlayheadTime();
         if (playheadTime < 0) return false;
         
-        Undo.RecordObjects(clips.Select(c => c.GetParentTrack() as Object).ToArray(), "移动Clip出点到播放头");
+        Undo.RecordObjects(GetTracksToRecord(clips), "移动Clip出点到播放头");
         
         foreach (var clip in clips)
         {
@@ -253,7 +253,7 @@ public static class Moshi_TLEnhance
         double playheadTime = GetPlayheadTime();
         if (playheadTime < 0) return false;
         
-        Undo.RecordObjects(clips.Select(c => c.GetParentTrack() as Object).ToArray(), "裁剪Clip入点");
+        Undo.RecordObjects(GetTracksToRecord(clips), "裁剪Clip入点");
         
         int trimmedCount = 0;
         foreach (var clip in clips)
@@ -313,7 +313,7 @@ public static class Moshi_TLEnhance
         double playheadTime = GetPlayheadTime();
         if (playheadTime < 0) return false;
         
-        Undo.RecordObjects(clips.Select(c => c.GetParentTrack() as Object).ToArray(), "裁剪Clip出点");
+        Undo.RecordObjects(GetTracksToRecord(clips), "裁剪Clip出点");
         
         int trimmedCount = 0;
         foreach (var clip in clips)
@@ -501,6 +501,59 @@ public static class Moshi_TLEnhance
         }
         
         return clips;
+    }
+    
+    /// <summary>
+    /// 获取需要记录 Undo 的轨道对象（兼容 Timeline 1.4.x）
+    /// </summary>
+    private static Object[] GetTracksToRecord(List<TimelineClip> clips)
+    {
+        return clips
+            .Select(GetParentTrack)
+            .Where(track => track != null)
+            .Distinct()
+            .Cast<Object>()
+            .ToArray();
+    }
+
+    /// <summary>
+    /// 获取 Clip 所属轨道（兼容 Timeline 1.4.x）
+    /// </summary>
+    private static TrackAsset GetParentTrack(TimelineClip clip)
+    {
+        if (clip == null) return null;
+
+        var timelineAsset = TimelineEditor.inspectedAsset;
+        if (timelineAsset == null) return null;
+
+        foreach (var track in timelineAsset.GetRootTracks())
+        {
+            var parentTrack = FindParentTrackRecursive(track, clip);
+            if (parentTrack != null) return parentTrack;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// 递归查找 Clip 所属轨道
+    /// </summary>
+    private static TrackAsset FindParentTrackRecursive(TrackAsset track, TimelineClip clip)
+    {
+        if (track == null) return null;
+
+        foreach (var trackClip in track.GetClips())
+        {
+            if (ReferenceEquals(trackClip, clip)) return track;
+        }
+
+        foreach (var childTrack in track.GetChildTracks())
+        {
+            var parentTrack = FindParentTrackRecursive(childTrack, clip);
+            if (parentTrack != null) return parentTrack;
+        }
+
+        return null;
     }
     
     /// <summary>

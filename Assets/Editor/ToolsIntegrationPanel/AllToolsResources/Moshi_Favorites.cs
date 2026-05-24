@@ -252,6 +252,10 @@ public sealed class Moshi_Favorites : EditorWindow
         {
             RemoveAllMissingEntries();
         }
+        if (GUILayout.Button("物体开关", EditorStyles.toolbarButton))
+        {
+            Moshi_FavActive.ShowWindow();
+        }
         if (GUILayout.Button("定位配置", EditorStyles.toolbarButton))
         {
             EditorGUIUtility.PingObject(config);

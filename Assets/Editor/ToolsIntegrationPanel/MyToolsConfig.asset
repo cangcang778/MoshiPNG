@@ -43,12 +43,17 @@ MonoBehaviour:
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
     bindingKey: "\u5DE5\u5177Moshi\u56FE\u7247\u8F6C\u9762\u7247"
-  - toolName: "SVG\u5BFC\u5165"
-    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/SVG\u4F4D\u7F6E\u5BFC\u5165\"
+  - toolName: "\u7CBE\u7075\u56FE\u7247"
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u7CBE\u7075\u56FE\u7247\u4E92\u8F6C\"
       \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
-    bindingKey: "\u5DE5\u5177MoshiSVG\u4F4D\u7F6E\u5BFC\u5165"
+    bindingKey: "\u5DE5\u5177Moshi\u7CBE\u7075\u56FE\u7247\u4E92\u8F6C"
+  - toolName: "\u8DEF\u5F84\u5BFC\u5165"
+    toolDescription: "\u6253\u5F00 3ds Max \u8DEF\u5F84\u5BFC\u5165\u5668\u3002"
+    category: "\u5DE5\u5177 / Moshi / \u8DEF\u5F84\u5DE5\u5177"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177Moshi\u8DEF\u5F84\u5DE5\u5177\u8DEF\u5F84\u5BFC\u5165\u5668"
   - toolName: "\u8DEF\u5F84\u9635\u5217"
     toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u8DEF\u5F84\u5DE5\u5177/\u8DEF\u5F84\u9635\u5217\u5FAA\u73AF\"
       \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
@@ -139,12 +144,29 @@ MonoBehaviour:
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
     bindingKey: "\u5DE5\u5177Moshi\u5DE5\u5177\u7BB1\u5BFC\u51FA"
-  - toolName: "\u7CBE\u7075\u56FE\u7247"
-    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u7CBE\u7075\u56FE\u7247\u4E92\u8F6C\"
+  - toolName: "SVG\u5BFC\u5165"
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/SVG\u4F4D\u7F6E\u5BFC\u5165\"
       \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
-    bindingKey: "\u5DE5\u5177Moshi\u7CBE\u7075\u56FE\u7247\u4E92\u8F6C"
+    bindingKey: "\u5DE5\u5177MoshiSVG\u4F4D\u7F6E\u5BFC\u5165"
+  - toolName: "\u6536\u85CF\u7269\u4F53"
+    toolDescription: "\u7BA1\u7406\u4E00\u7EC4 Hierarchy \u7269\u4F53\uFF0C\u5E76\u4E00\u952E\u5207\u6362\u5B83\u4EEC\u7684\u6FC0\u6D3B\u72B6\u6001\u3002"
+    category: "\u5DE5\u5177 / Moshi / \u8D44\u6E90\u6536\u85CF\u5939"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177Moshi\u8D44\u6E90\u6536\u85CF\u5939\u6536\u85CF\u7269\u4F53\u5F00\u5173"
+  - toolName: "\u5207\u6362\u6536\u85CF"
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u8D44\u6E90\u6536\u85CF\u5939/\u5207\u6362\u6536\u85CF\u7269\u4F53\u5F00\u5173\"
+      \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
+    category: "\u5DE5\u5177 / Moshi / \u8D44\u6E90\u6536\u85CF\u5939"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177Moshi\u8D44\u6E90\u6536\u85CF\u5939\u5207\u6362\u6536\u85CF\u7269\u4F53\u5F00\u5173"
+  - toolName: Volu
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/Volume
+      \u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3\" \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
+    category: "\u5DE5\u5177 / Moshi"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177MoshiVolume\u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3"
   - toolName: "\u6E32\u67D3\u573A\u666F"
     toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u6E32\u67D3\u573A\u666F\u751F\u6210\"
       \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
@@ -157,17 +179,6 @@ MonoBehaviour:
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
     bindingKey: "\u5DE5\u5177Moshi\u9010\u5E27\u6E32\u67D3"
-  - toolName: "\u8DEF\u5F84\u5BFC\u5165"
-    toolDescription: "\u4ECEFBX/CSV/JSON\u5BFC\u51653D\u8DEF\u5F84\u6570\u636E"
-    category: "\u8DEF\u5F84\u5DE5\u5177"
-    showInQuickAccess: 1
-    bindingKey: path_importer
-  - toolName: Volu
-    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/Volume
-      \u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3\" \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
-    category: "\u5DE5\u5177 / Moshi"
-    showInQuickAccess: 1
-    bindingKey: "\u5DE5\u5177MoshiVolume\u4E2D\u6587\u672C\u5730\u5316\u7A97\u53E3"
   quickAccessButtonMinWidth: 90
   quickAccessButtonMinHeight: 20
   quickAccessButtonMaxWidth: 90

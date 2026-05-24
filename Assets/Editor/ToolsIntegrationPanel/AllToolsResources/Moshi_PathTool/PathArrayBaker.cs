@@ -27,6 +27,15 @@ namespace Moshi.PathTool.Editor
 
         private const string TOOL_NAME = "路径阵列动画烘焙";
 
+        private struct LoopFixInfo
+        {
+            public float adjustedSpeed;
+            public int intervalSteps;
+            public float intervalTime;
+            public bool forceFirstLast;
+            public bool usesIntervalFormula;
+        }
+
         [MenuItem("工具/Moshi/路径工具/" + TOOL_NAME, false, 101)]
         public static void ShowWindow()
         {
@@ -118,73 +127,82 @@ namespace Moshi.PathTool.Editor
                 new GUIContent("合并到单个 Clip", "开启：所有实例的动画写入同一个 AnimationClip\n关闭：每个实例生成独立的 .anim 文件"),
                 mergeToSingleClip);
 
-            duration = EditorGUILayout.FloatField(
-                new GUIContent("持续时间(秒)", "烘焙动画的时间长度"),
-                duration);
-            duration = Mathf.Max(0.1f, duration);
+            sampleRate = EditorGUILayout.IntSlider(
+                new GUIContent("采样率(FPS)", "每秒采样帧数。持续时间会自动对齐到整数帧，避免 30FPS 下 1秒/N秒无法落到帧点。"),
+                sampleRate, 10, 60);
 
-            // 匹配周期按钮
+            duration = EditorGUILayout.FloatField(
+                new GUIContent("持续时间(秒)", "烘焙动画的时间长度，会按当前 FPS 对齐到整数帧"),
+                duration);
+            duration = SnapDurationToFrames(Mathf.Max(0.1f, duration), sampleRate);
+
+            // 匹配速度按钮：持续时间是整个 Clip 时长，不再被按钮改写
             if (cycler != null && cycler.speed > 0.001f)
             {
-                float cyclePeriod = 1f / cycler.speed;
-                EditorGUILayout.BeginHorizontal();
+                int validCount = GetValidInstanceCount();
+                int alignedFrames = DurationToFrameCount(duration, sampleRate);
+                float alignedDuration = alignedFrames / (float)sampleRate;
+                float currentCyclePeriod = 1f / cycler.speed;
+                float currentIntervalPeriod = validCount > 0 ? currentCyclePeriod / validCount : currentCyclePeriod;
+                float oneStepSpeed = CalculateIntervalSpeed(1, alignedDuration, validCount);
                 EditorGUILayout.LabelField(
-                    $"  完整周期: {cyclePeriod:F3}s（{cycler.speed:F2}圈/秒）",
+                    $"  当前Clip: {alignedDuration:F3}s = {alignedFrames}帧 @ {sampleRate}FPS  |  当前单格: {currentIntervalPeriod:F3}s  |  1格匹配速度: {oneStepSpeed:F3}圈/秒",
                     EditorStyles.miniLabel);
+
+                EditorGUILayout.BeginHorizontal();
                 GUILayout.FlexibleSpace();
+                if (GUILayout.Button("匹配间隔", EditorStyles.miniButton, GUILayout.Width(70)))
+                    ApplyIntervalMatchedSpeed(1, alignedDuration, validCount);
                 if (GUILayout.Button("匹配周期", EditorStyles.miniButton, GUILayout.Width(70)))
-                {
-                    duration = cyclePeriod;
-                }
+                    ApplyCycleMatchedSpeed(alignedDuration);
                 if (GUILayout.Button("×2", EditorStyles.miniButton, GUILayout.Width(30)))
-                {
-                    duration = cyclePeriod * 2f;
-                }
+                    ApplyIntervalMatchedSpeed(2, alignedDuration, validCount);
                 if (GUILayout.Button("×4", EditorStyles.miniButton, GUILayout.Width(30)))
-                {
-                    duration = cyclePeriod * 4f;
-                }
+                    ApplyIntervalMatchedSpeed(4, alignedDuration, validCount);
                 EditorGUILayout.EndHorizontal();
             }
 
             autoLoopFix = EditorGUILayout.Toggle(
-                new GUIContent("自动循环修复", "强制首尾帧一致 + 设置 Clip LoopTime，确保动画无缝循环"),
+                new GUIContent("自动循环修复", "持续时间表示整个 Clip 时长。开启后按当前 FPS 对齐后的 Clip 时长反算间隔步数和速度：速度 = 间隔步数 / (数量 × Clip时长)。"),
                 autoLoopFix);
 
             if (autoLoopFix && cycler != null && cycler.speed > 0.001f)
             {
-                float rawSpd = cycler.speed;
-                float cyclesNeeded = rawSpd * duration;
-                int roundedCycles = Mathf.Max(1, Mathf.RoundToInt(cyclesNeeded));
-                float adjustedSpeed = roundedCycles / duration;
-                if (Mathf.Abs(adjustedSpeed - rawSpd) > 0.001f)
+                int validCount = GetValidInstanceCount();
+                int alignedFrames = DurationToFrameCount(duration, sampleRate);
+                float alignedDuration = alignedFrames / (float)sampleRate;
+                LoopFixInfo loopInfo = CalculateLoopFixInfo(cycler.speed, alignedDuration, validCount, cycler.cycleMode);
+                if (loopInfo.usesIntervalFormula)
                 {
                     EditorGUILayout.LabelField(
-                        $"  ⚡ 速度自动适配: {rawSpd:F3} → {adjustedSpeed:F3} 圈/秒（恰好 {roundedCycles} 圈）",
+                        $"  ⚡ 间隔循环: {cycler.speed:F3} → {loopInfo.adjustedSpeed:F3} 圈/秒（{loopInfo.intervalSteps}格/{validCount}，每格 {loopInfo.intervalTime:F3}s）",
                         EditorStyles.miniLabel);
+                    if (!loopInfo.forceFirstLast)
+                    {
+                        EditorGUILayout.LabelField(
+                            "  ✓ 使用阵列等距替位循环：不强制单个物体首尾相同，避免末帧回拉。",
+                            EditorStyles.miniLabel);
+                    }
                 }
                 else
                 {
                     EditorGUILayout.LabelField(
-                        $"  ✓ 恰好 {roundedCycles} 圈，无需调整速度",
+                        $"  ✓ 完整周期循环: {cycler.speed:F3} → {loopInfo.adjustedSpeed:F3} 圈/秒（恰好 {loopInfo.intervalSteps} 圈）",
                         EditorStyles.miniLabel);
                 }
             }
-
-            sampleRate = EditorGUILayout.IntSlider(
-                new GUIContent("采样率(FPS)", "每秒采样帧数，越高越精确但文件越大"),
-                sampleRate, 10, 60);
 
             speedCurve = EditorGUILayout.CurveField(
                 new GUIContent("速度曲线", "横轴=归一化时间(0→1), 纵轴=速度倍率"),
                 speedCurve);
 
             // 预估信息
-            int totalFrames = Mathf.RoundToInt(duration * sampleRate);
+            int totalFrames = DurationToFrameCount(duration, sampleRate);
+            float actualDuration = totalFrames / (float)sampleRate;
             int instanceCount = (cycler != null && cycler.instances != null) ? cycler.instances.Count : 0;
             string outputDesc = mergeToSingleClip
-                ? $"→ 1 个 Clip，包含 {instanceCount} 个子对象 × {totalFrames} 帧"
-                : $"→ {instanceCount} 个 Clip × {totalFrames} 帧 = {instanceCount * totalFrames} 关键帧";
+                ? $"→ 1 个 Clip，{actualDuration:F3}s = {totalFrames} 帧 @ {sampleRate}FPS，包含 {instanceCount} 个子对象"
+                : $"→ {instanceCount} 个 Clip × {totalFrames} 帧 @ {sampleRate}FPS = {instanceCount * totalFrames} 关键帧";
             EditorGUILayout.LabelField(outputDesc, EditorStyles.miniLabel);
 
             GUILayout.Space(6);
@@ -295,22 +313,23 @@ namespace Moshi.PathTool.Editor
             int count = validInstances.Count;
             Transform parent = cycler.transform;
 
-            // 自动循环修复：调整速度使持续时间 = 整数圈
+            int totalFrames = DurationToFrameCount(duration, sampleRate);
+            float actualDuration = totalFrames / (float)sampleRate;
+
+            // 自动循环修复：按数量与实际帧对齐时长计算“单格间隔”循环
             float speed = rawSpeed;
-            int actualCycles = 0;
-            if (autoLoopFix && duration > 0.001f)
+            bool forceFirstLast = true;
+            if (autoLoopFix && actualDuration > 0.001f)
             {
-                float cyclesNeeded = rawSpeed * duration;
-                actualCycles = Mathf.Max(1, Mathf.RoundToInt(cyclesNeeded));
-                speed = actualCycles / duration;
+                LoopFixInfo loopInfo = CalculateLoopFixInfo(rawSpeed, actualDuration, count, mode);
+                speed = loopInfo.adjustedSpeed;
+                forceFirstLast = loopInfo.forceFirstLast;
             }
 
-            int totalFrames = Mathf.RoundToInt(duration * sampleRate);
-
             if (mergeToSingleClip)
-                BakeMergeSingleClip(validInstances, path, speed, mode, alignToPath, upDir, fixedRotEuler, rotSpeed, useRotCurve, rxCurve, ryCurve, rzCurve, useScaleCurve, sCurve, count, parent, totalFrames, enableGrowAnimation);
+                BakeMergeSingleClip(validInstances, path, speed, mode, alignToPath, upDir, fixedRotEuler, rotSpeed, useRotCurve, rxCurve, ryCurve, rzCurve, useScaleCurve, sCurve, count, parent, totalFrames, enableGrowAnimation, forceFirstLast);
             else
-                BakeSeparateClips(validInstances, path, speed, mode, alignToPath, upDir, fixedRotEuler, rotSpeed, useRotCurve, rxCurve, ryCurve, rzCurve, useScaleCurve, sCurve, count, parent, totalFrames, enableGrowAnimation);
+                BakeSeparateClips(validInstances, path, speed, mode, alignToPath, upDir, fixedRotEuler, rotSpeed, useRotCurve, rxCurve, ryCurve, rzCurve, useScaleCurve, sCurve, count, parent, totalFrames, enableGrowAnimation, forceFirstLast);
         }
 
         // ---- 合并模式：所有实例写入同一个 Clip ----
@@ -320,7 +339,7 @@ namespace Moshi.PathTool.Editor
             bool alignToPath, Vector3 upDir, Vector3 fixedRotEuler, float rotSpeed,
             bool useRotCurve, AnimationCurve rxCurve, AnimationCurve ryCurve, AnimationCurve rzCurve,
             bool useScaleCurve, AnimationCurve sCurve, int count, Transform parent, int totalFrames,
-            bool enableGrow)
+            bool enableGrow, bool forceFirstLast)
         {
             AnimationClip clip = new AnimationClip();
             clip.name = clipPrefix;
@@ -391,9 +410,9 @@ namespace Moshi.PathTool.Editor
 
             clip.EnsureQuaternionContinuity();
 
-            // 循环修复：首尾帧匹配 + loopTime
+            // 循环修复：完整圈时首尾帧匹配；单格间隔循环只设置 loopTime
             if (autoLoopFix)
-                FixClipLoop(clip, totalFrames);
+                FixClipLoop(clip, forceFirstLast);
 
             // Legacy 标记：Animation 组件需要
             if (createAnimationPlayer)
@@ -431,7 +450,7 @@ namespace Moshi.PathTool.Editor
             bool alignToPath, Vector3 upDir, Vector3 fixedRotEuler, float rotSpeed,
             bool useRotCurve, AnimationCurve rxCurve, AnimationCurve ryCurve, AnimationCurve rzCurve,
             bool useScaleCurve, AnimationCurve sCurve, int count, Transform parent, int totalFrames,
-            bool enableGrow)
+            bool enableGrow, bool forceFirstLast)
         {
             List<AnimationClip> createdClips = new List<AnimationClip>();
 
@@ -496,7 +515,7 @@ namespace Moshi.PathTool.Editor
                     clip.EnsureQuaternionContinuity();
 
                     if (autoLoopFix)
-                        FixClipLoop(clip, totalFrames);
+                        FixClipLoop(clip, forceFirstLast);
 
                     if (createAnimationPlayer)
                         clip.legacy = true;
@@ -616,6 +635,91 @@ namespace Moshi.PathTool.Editor
             localRot = Quaternion.Inverse(parent.rotation) * worldRot;
         }
 
+        private int GetValidInstanceCount()
+        {
+            if (cycler == null || cycler.instances == null) return 0;
+            int validCount = 0;
+            foreach (GameObject instance in cycler.instances)
+            {
+                if (instance != null) validCount++;
+            }
+            return validCount;
+        }
+
+        private static int DurationToFrameCount(float seconds, int fps)
+        {
+            fps = Mathf.Max(1, fps);
+            return Mathf.Max(1, Mathf.RoundToInt(Mathf.Max(0.001f, seconds) * fps));
+        }
+
+        private static float SnapDurationToFrames(float seconds, int fps)
+        {
+            fps = Mathf.Max(1, fps);
+            return DurationToFrameCount(seconds, fps) / (float)fps;
+        }
+
+        private static float CalculateIntervalSpeed(int intervalSteps, float clipDuration, int count)
+        {
+            intervalSteps = Mathf.Max(1, intervalSteps);
+            clipDuration = Mathf.Max(0.001f, clipDuration);
+            count = Mathf.Max(1, count);
+            return intervalSteps / (count * clipDuration);
+        }
+
+        private void ApplyIntervalMatchedSpeed(int intervalSteps, float clipDuration, int count)
+        {
+            if (cycler == null) return;
+            Undo.RecordObject(cycler, "匹配路径阵列间隔速度");
+            cycler.speed = CalculateIntervalSpeed(intervalSteps, clipDuration, count);
+            EditorUtility.SetDirty(cycler);
+        }
+
+        private void ApplyCycleMatchedSpeed(float clipDuration)
+        {
+            if (cycler == null) return;
+            Undo.RecordObject(cycler, "匹配路径阵列周期速度");
+            cycler.speed = 1f / Mathf.Max(0.001f, clipDuration);
+            EditorUtility.SetDirty(cycler);
+        }
+
+        /// <summary>
+        /// 自动循环修复公式：
+        /// Loop 模式下按阵列数量计算单格间隔，让动画结尾刚好移动 N 个间隔。
+        /// 公式：间隔相位 = 1 / count，间隔步数 = round(speed × duration × count)，修正速度 = 间隔步数 / (count × duration)。
+        /// 当间隔步数是 count 的整数倍时才是完整圈，可强制首尾一致；否则保留“移动到下一格”的末帧状态。
+        /// </summary>
+        private static LoopFixInfo CalculateLoopFixInfo(float rawSpeed, float bakeDuration, int count, ArrayCycleMode mode)
+        {
+            rawSpeed = Mathf.Max(0.001f, rawSpeed);
+            bakeDuration = Mathf.Max(0.001f, bakeDuration);
+            count = Mathf.Max(1, count);
+
+            if (mode == ArrayCycleMode.Loop && count > 1)
+            {
+                float idealSteps = rawSpeed * bakeDuration * count;
+                int intervalSteps = Mathf.Max(1, Mathf.RoundToInt(idealSteps));
+                float adjustedSpeed = intervalSteps / (count * bakeDuration);
+                return new LoopFixInfo
+                {
+                    adjustedSpeed = adjustedSpeed,
+                    intervalSteps = intervalSteps,
+                    intervalTime = bakeDuration / intervalSteps,
+                    forceFirstLast = intervalSteps % count == 0,
+                    usesIntervalFormula = true
+                };
+            }
+
+            int cycles = Mathf.Max(1, Mathf.RoundToInt(rawSpeed * bakeDuration));
+            return new LoopFixInfo
+            {
+                adjustedSpeed = cycles / bakeDuration,
+                intervalSteps = cycles,
+                intervalTime = bakeDuration / cycles,
+                forceFirstLast = true,
+                usesIntervalFormula = false
+            };
+        }
+
         /// <summary>
         /// 根据模式计算当前相位（与 PathArrayCycler 的 AdvancePhase 一致）
         /// </summary>
@@ -641,31 +745,28 @@ namespace Moshi.PathTool.Editor
         }
 
         /// <summary>
-        /// 修复 Clip 使其可无缝循环：
-        /// 1. 将每条曲线的最后一个关键帧的值设为与第一帧相同
-        /// 2. 设置 AnimationClipSettings.loopTime = true
+        /// 修复 Clip 循环：
+        /// 1. 完整圈循环时可强制每条曲线首尾值一致
+        /// 2. 单格间隔循环时只设置 LoopTime，保留末帧的“移动到下一格”状态
         /// </summary>
-        private static void FixClipLoop(AnimationClip clip, int totalFrames)
+        private static void FixClipLoop(AnimationClip clip, bool forceFirstLast)
         {
-            // 遍历 clip 中所有绑定的曲线
-            var bindings = AnimationUtility.GetCurveBindings(clip);
-            foreach (var binding in bindings)
+            if (forceFirstLast)
             {
-                AnimationCurve curve = AnimationUtility.GetEditorCurve(clip, binding);
-                if (curve == null || curve.keys.Length < 2) continue;
+                var bindings = AnimationUtility.GetCurveBindings(clip);
+                foreach (var binding in bindings)
+                {
+                    AnimationCurve curve = AnimationUtility.GetEditorCurve(clip, binding);
+                    if (curve == null || curve.keys.Length < 2) continue;
 
-                Keyframe[] keys = curve.keys;
-                float lastTime = keys[keys.Length - 1].time;
-                float firstValue = keys[0].value;
-
-                // 将最后一个关键帧的值替换为第一帧的值
-                keys[keys.Length - 1] = new Keyframe(lastTime, firstValue);
-
-                // 写回曲线
-                AnimationUtility.SetEditorCurve(clip, binding, new AnimationCurve(keys));
+                    Keyframe[] keys = curve.keys;
+                    float lastTime = keys[keys.Length - 1].time;
+                    float firstValue = keys[0].value;
+                    keys[keys.Length - 1] = new Keyframe(lastTime, firstValue);
+                    AnimationUtility.SetEditorCurve(clip, binding, new AnimationCurve(keys));
+                }
             }
 
-            // 设置 loopTime
             var settings = AnimationUtility.GetAnimationClipSettings(clip);
             settings.loopTime = true;
             AnimationUtility.SetAnimationClipSettings(clip, settings);

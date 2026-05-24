@@ -56,9 +56,6 @@ namespace MoshiTools
         // 工具列表与单选索引
         // Tool list and single selection index
         private List<ToolEntry> toolEntries;
-#pragma warning disable CS0414
-        private bool toolEntriesDirty = true;
-#pragma warning restore CS0414
         private int selectedToolIndex = -1;  // 当前选中工具索引（-1为未选）
         private bool includeSharedFiles = true; // 是否包含框架共享文件（ToolsIntegrationPanel根目录下的非Moshi_文件）
 
@@ -302,7 +299,6 @@ namespace MoshiTools
             // 按名称排序
             // Sort by name
             toolEntries.Sort((a, b) => string.Compare(a.toolName, b.toolName, StringComparison.OrdinalIgnoreCase));
-            toolEntriesDirty = false;
 
             // 从 MyToolsConfig 获取中文显示名（与面板按钮名称一致）
             // Get display names from MyToolsConfig (matching panel button names)

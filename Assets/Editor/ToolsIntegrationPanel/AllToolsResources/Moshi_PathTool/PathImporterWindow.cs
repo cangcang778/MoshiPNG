@@ -42,6 +42,7 @@ namespace Moshi.PathTool.Editor
         private bool centerPath = false;
         private bool simplifyPath = false;
         private float simplifyTolerance = 0.1f;
+        private float importedPointSize = 0.3f;
         private bool replaceExisting = true;
 
         // 预览
@@ -69,6 +70,8 @@ namespace Moshi.PathTool.Editor
             PathImporterWindow window = GetWindow<PathImporterWindow>(TOOL_NAME);
             window.minSize = new Vector2(400, 500);
             window.targetPathCreator = target;
+            if (target != null)
+                window.importedPointSize = target.pointSize;
         }
 
         private void OnGUI()
@@ -147,8 +150,11 @@ namespace Moshi.PathTool.Editor
             EditorGUILayout.LabelField("目标设置", EditorStyles.boldLabel);
             
             EditorGUILayout.BeginHorizontal();
+            EditorGUI.BeginChangeCheck();
             targetPathCreator = (PathCreator)EditorGUILayout.ObjectField(
                 "目标 PathCreator", targetPathCreator, typeof(PathCreator), true);
+            if (EditorGUI.EndChangeCheck() && targetPathCreator != null)
+                importedPointSize = targetPathCreator.pointSize;
             
             if (GUILayout.Button("查找", GUILayout.Width(50)))
             {
@@ -174,7 +180,11 @@ namespace Moshi.PathTool.Editor
                     PathCreator p = path; // 闭包捕获
                     menu.AddItem(new GUIContent($"{p.pathName} ({p.pathPoints.Count}点)"), 
                         targetPathCreator == p, 
-                        () => { targetPathCreator = p; });
+                        () =>
+                        {
+                            targetPathCreator = p;
+                            importedPointSize = p.pointSize;
+                        });
                 }
                 menu.ShowAsContext();
             }
@@ -306,6 +316,10 @@ namespace Moshi.PathTool.Editor
                     simplifyTolerance);
                 EditorGUI.indentLevel--;
             }
+
+            importedPointSize = EditorGUILayout.Slider(
+                new GUIContent("Point Size", "导入完成后写入目标 PathCreator 的控制点显示大小"),
+                importedPointSize, 0.1f, 2f);
 
             replaceExisting = EditorGUILayout.Toggle(
                 new GUIContent("替换现有路径", "是否清空现有路径点（关闭则追加）"), 
@@ -493,8 +507,9 @@ namespace Moshi.PathTool.Editor
 
             Undo.RecordObject(targetPathCreator, "Import Path");
 
-            // 使用内部方法设置路径点
+            // 使用内部方法设置路径点，并同步显示参数
             targetPathCreator.SetPathPoints(previewPoints, replaceExisting);
+            targetPathCreator.pointSize = Mathf.Clamp(importedPointSize, 0.1f, 2f);
 
             EditorUtility.SetDirty(targetPathCreator);
 
