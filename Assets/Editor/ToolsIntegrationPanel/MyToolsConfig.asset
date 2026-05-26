@@ -179,6 +179,18 @@ MonoBehaviour:
     category: "\u5DE5\u5177 / Moshi"
     showInQuickAccess: 1
     bindingKey: "\u5DE5\u5177Moshi\u9010\u5E27\u6E32\u67D3"
+  - toolName: "\u9010\u5E27\u6E32\u67D3"
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u9010\u5E27\u6E32\u67D3\u73AF\u5883\"
+      \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
+    category: "\u5DE5\u5177 / Moshi"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177Moshi\u9010\u5E27\u6E32\u67D3\u73AF\u5883"
+  - toolName: "\u900F\u660E\u9010\u5E27"
+    toolDescription: "\u6765\u81EA\u83DC\u5355\u9879 \"\u5DE5\u5177/Moshi/\u900F\u660E\u9010\u5E27\u6E32\u67D3\"
+      \u7684\u81EA\u52A8\u6CE8\u518C\u5DE5\u5177\u3002"
+    category: "\u5DE5\u5177 / Moshi"
+    showInQuickAccess: 1
+    bindingKey: "\u5DE5\u5177Moshi\u900F\u660E\u9010\u5E27\u6E32\u67D3"
   quickAccessButtonMinWidth: 90
   quickAccessButtonMinHeight: 20
   quickAccessButtonMaxWidth: 90

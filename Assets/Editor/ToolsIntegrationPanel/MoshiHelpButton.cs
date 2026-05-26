@@ -48,6 +48,8 @@ public static class MoshiHelpButton
         // 渲染管线
         { "渲染场景生成", "Moshi_SceneGenerator.md" },
         { "逐帧渲染", "Moshi_FrameRenderer.md" },
+        { "逐帧渲染环境", "Moshi_FrameEnv.md" },
+        { "透明逐帧渲染", "Moshi_FrameRenderPro.md" },
         // 通用/导出
         { "工具箱导出", "Moshi_Exporter.md" },
     };
