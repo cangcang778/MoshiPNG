@@ -1,0 +1,1770 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75508002563bc1a46a09dcc4f69f2f67, type: 3}
+  m_Name: MoshiVFXAssetDatabase
+  m_EditorClassIdentifier: 
+  assets:
+  - guid: 6dcabc35246bd4b48ad4594c0c3a1244
+    path: Assets/Effect/FX_Common/Shader/add.shader
+    name: add
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: 
+    fileSize: 6907
+    favorite: 0
+  - guid: 15de4f1e085a5d240a53b2db762b6c44
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE Standard Dissolve Clip.shader
+    name: ASE Standard Dissolve Clip
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 77434
+    favorite: 0
+  - guid: 0d3d9e7cd867da04f9e87ce949cb665f
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Additive.shader
+    name: ASE_Additive
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: 
+    fileSize: 33861
+    favorite: 0
+  - guid: 22cc6fb8b372f1b47914fdc7bacd8401
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Additive_Dissolve.shader
+    name: ASE_Additive_Dissolve
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 32331
+    favorite: 0
+  - guid: 278418b501030ec4c863f5a72203f839
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Additive_Fade.shader
+    name: ASE_Additive_Fade
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: 
+    fileSize: 37067
+    favorite: 0
+  - guid: fef70d125fd0b8a4f978132565419df3
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Additive_mask.shader
+    name: ASE_Additive_mask
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 35772
+    favorite: 0
+  - guid: 5d9f7604c219ac04a8b237ad7c122575
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Additive_UV.shader
+    name: ASE_Additive_UV
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 46603
+    favorite: 0
+  - guid: 0fe82cb2c3b46db4ab6c288c6fd491f1
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blend_Dissolve.shader
+    name: ASE_Blend_Dissolve
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 27962
+    favorite: 0
+  - guid: a3052237daad6024ca9e95d3328318a4
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_mask.shader
+    name: ASE_Blended_mask
+    kind: 1
+    mainTag: "\u906E\u7F69"
+    tags:
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 28590
+    favorite: 0
+  - guid: 6314364e698f5d44f9374f9a10a5331b
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_mask_Fade.shader
+    name: ASE_Blended_mask_Fade
+    kind: 1
+    mainTag: "\u906E\u7F69"
+    tags:
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 30813
+    favorite: 0
+  - guid: e011fb7990271f0419cb459693a92a86
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_mask_ground.shader
+    name: ASE_Blended_mask_ground
+    kind: 1
+    mainTag: "\u906E\u7F69"
+    tags:
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 30254
+    favorite: 0
+  - guid: b1e352469508fd840a22dd83e17a321f
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_mask_smoke.shader
+    name: ASE_Blended_mask_smoke
+    kind: 1
+    mainTag: "\u906E\u7F69"
+    tags:
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 36065
+    favorite: 0
+  - guid: 5435074e34b9e834b9a75c5691da92dc
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_UV.shader
+    name: ASE_Blended_UV
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 37751
+    favorite: 0
+  - guid: 7d73c50ff39dfed4e8ca411eaba8ffc2
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_UV_Back.shader
+    name: ASE_Blended_UV_Back
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 35468
+    favorite: 0
+  - guid: 6a6f6fc7aef39414a96df14e4fa1e48e
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_UV_Mask.shader
+    name: ASE_Blended_UV_Mask
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 36356
+    favorite: 0
+  - guid: 629340ccfce5937448e0a5fb60face18
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Blended_UV_Time.shader
+    name: ASE_Blended_UV_Time
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 32321
+    favorite: 0
+  - guid: 47e5c1cdf2bc943418c6d277163876df
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Distort.shader
+    name: ASE_Distort
+    kind: 1
+    mainTag: "\u626D\u66F2"
+    tags:
+    - "\u626D\u66F2"
+    shaderName: 
+    fileSize: 28700
+    favorite: 0
+  - guid: 3d4581ac33ab0cb49b31406ffa890afd
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Standard.shader
+    name: ASE_Standard
+    kind: 1
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 57852
+    favorite: 0
+  - guid: b16ac468c0de5ba49b7f97106d6c7ebc
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Standard_Alpha.shader
+    name: ASE_Standard_Alpha
+    kind: 1
+    mainTag: "\u900F\u660E"
+    tags:
+    - "\u900F\u660E"
+    shaderName: 
+    fileSize: 60794
+    favorite: 0
+  - guid: 7ab0d196abcbf4740af5da4827bed5ce
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/ASE_Standard_huoqiu.shader
+    name: ASE_Standard_huoqiu
+    kind: 1
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 33162
+    favorite: 0
+  - guid: 6021d4625b4135d47aec5ad8943c7aea
+    path: Assets/Effect/FX_Common/Shader/cola_ASE/Shader Graphs Distort.shadergraph
+    name: Shader Graphs Distort
+    kind: 1
+    mainTag: "\u626D\u66F2"
+    tags:
+    - "\u626D\u66F2"
+    shaderName: 
+    fileSize: 86830
+    favorite: 0
+  - guid: 84300a99748c870408103be5b33a34c4
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Additive Dissolve Soft Ground
+      Nosie Uv Mask.shader
+    name: ASE Additive Dissolve Soft Ground Nosie Uv Mask
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    - "UV\u6D41\u52A8"
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 51720
+    favorite: 0
+  - guid: af147941baf8f564598b9e799eb8ce07
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Additive Dissolve Soft Ground
+      Nosie Uv.shader
+    name: ASE Additive Dissolve Soft Ground Nosie Uv
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 45117
+    favorite: 0
+  - guid: cad631a3a0ce48945a736d2a58771da2
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Additive Dissolve Soft Ground.shader
+    name: ASE Additive Dissolve Soft Ground
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 34840
+    favorite: 0
+  - guid: aa263db09b220e347acd46cd290a48d4
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Additive Mask.shader
+    name: ASE Additive Mask
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 32565
+    favorite: 0
+  - guid: 08fd7d17aa1a715449948f4a1a3bc2e4
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Blended Dissolve Clip Ground
+      Nosie Uv.shader
+    name: ASE Blended Dissolve Clip Ground Nosie Uv
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 48162
+    favorite: 0
+  - guid: 33c4939a0a7a1ef41a0b6f5e0d324b29
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Blended Dissolve Soft Ground
+      Nosie Uv.shader
+    name: ASE Blended Dissolve Soft Ground Nosie Uv
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 45138
+    favorite: 0
+  - guid: 13816633e32a40042a5900788bcc635b
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Blended Dissolve Soft Ground
+      Tow.shader
+    name: ASE Blended Dissolve Soft Ground Tow
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 36007
+    favorite: 0
+  - guid: ad7aaa604fe6ca9429f1e05752dcb5a7
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Blended Dissolve Soft Ground.shader
+    name: ASE Blended Dissolve Soft Ground
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 34856
+    favorite: 0
+  - guid: ca17fb39e41e482499e7a7959232713a
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/ASE Blended Mask.shader
+    name: ASE Blended Mask
+    kind: 1
+    mainTag: "\u906E\u7F69"
+    tags:
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 32530
+    favorite: 0
+  - guid: d0f73fb9c0bdedf40a1bc3d6a959e757
+    path: Assets/Effect/FX_Common/Shader/cola_ASE_01/New Amplify Shader.shader
+    name: New Amplify Shader
+    kind: 1
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1839
+    favorite: 0
+  - guid: f4e0ea4c9467a2248a603e59821da21a
+    path: Assets/Effect/FX_Common/Shader/Erosion_Add.shader
+    name: Erosion_Add
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 6959
+    favorite: 0
+  - guid: 66884a2946458c24fbe090bb89a55d77
+    path: Assets/Effect/FX_Common/Shader/Erosion_Add01.shader
+    name: Erosion_Add01
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 10265
+    favorite: 0
+  - guid: c0bf776884ae1f9428a06fe4be1ab447
+    path: Assets/Effect/FX_Common/Shader/Erosion_Add_Vertex_Move.shader
+    name: Erosion_Add_Vertex_Move
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 14798
+    favorite: 0
+  - guid: d1934c8552a47c94e9b738a6307d9c4a
+    path: Assets/Effect/FX_Common/Shader/Erosion_Ahpha.shader
+    name: Erosion_Ahpha
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 10618
+    favorite: 0
+  - guid: 34055b2ba67cb204d8f91a669241748e
+    path: Assets/Effect/FX_Common/Shader/Erosion_Ahpha_Vertex_Move.shader
+    name: Erosion_Ahpha_Vertex_Move
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 15230
+    favorite: 0
+  - guid: 6d10220411d6db94385d15b03a85ea9c
+    path: Assets/Effect/FX_Common/Shader/Erosion_Blend02.shader
+    name: Erosion_Blend02
+    kind: 1
+    mainTag: "\u6EB6\u89E3"
+    tags:
+    - "\u6EB6\u89E3"
+    shaderName: 
+    fileSize: 9641
+    favorite: 0
+  - guid: daa871c849f73004ab24866611f2bc9a
+    path: Assets/Effect/FX_Common/Shader/Fresnel.shader
+    name: Fresnel
+    kind: 1
+    mainTag: "\u83F2\u6D85\u5C14"
+    tags:
+    - "\u83F2\u6D85\u5C14"
+    shaderName: 
+    fileSize: 6218
+    favorite: 0
+  - guid: 5aaa39db5dbb3394aac6aa53dcaf6862
+    path: Assets/Effect/FX_Common/Shader/High Queue.shader
+    name: High Queue
+    kind: 1
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 6076
+    favorite: 0
+  - guid: cc241c544edfbd74aa148dc336dcf35b
+    path: Assets/Effect/FX_Common/Shader/High Queue_Alpha.shader
+    name: High Queue_Alpha
+    kind: 1
+    mainTag: "\u900F\u660E"
+    tags:
+    - "\u900F\u660E"
+    shaderName: 
+    fileSize: 6077
+    favorite: 0
+  - guid: 20dd866b5acfc274590a23095a5eb1ce
+    path: Assets/Effect/FX_Common/Shader/MagicCoverAdd.shader
+    name: MagicCoverAdd
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: 
+    fileSize: 18440
+    favorite: 0
+  - guid: b866ea4b8013a1e43a8bcd2c388bf68b
+    path: Assets/Effect/FX_Common/Shader/Mask Add.shader
+    name: Mask Add
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "\u906E\u7F69"
+    shaderName: 
+    fileSize: 1767
+    favorite: 0
+  - guid: b415aa6f2cd53f04296778c548fce084
+    path: Assets/Effect/FX_Common/Shader/Refraction.shader
+    name: Refraction
+    kind: 1
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 7703
+    favorite: 0
+  - guid: 5e17a2fe6ec46ef4f8901db580540966
+    path: Assets/Effect/FX_Common/Shader/UV_Move_Add01.shader
+    name: UV_Move_Add01
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 7363
+    favorite: 0
+  - guid: 261c74c9a72b57548bfa9b0a0d70756c
+    path: Assets/Effect/FX_Common/Shader/UV_Move_Add02.shader
+    name: UV_Move_Add02
+    kind: 1
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 7708
+    favorite: 0
+  - guid: cc001d6feba04414eb76ebc02c88af5d
+    path: Assets/Effect/FX_Common/Shader/UV_Move_Ahpha01.shader
+    name: UV_Move_Ahpha01
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 7675
+    favorite: 0
+  - guid: 59aa221add654c44994918524c12749f
+    path: Assets/Effect/FX_Common/Shader/UV_Move_Blend02.shader
+    name: UV_Move_Blend02
+    kind: 1
+    mainTag: "UV\u6D41\u52A8"
+    tags:
+    - "UV\u6D41\u52A8"
+    shaderName: 
+    fileSize: 7643
+    favorite: 0
+  - guid: 69449450e6e2efc44a86d6940150caf3
+    path: "Assets/MoShi/Common/materials/4\u5F20.mat"
+    name: "4\u5F20"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1296
+    favorite: 0
+  - guid: b1241a5b7b3b08e40aa609fb5be7f9b3
+    path: "Assets/MoShi/Common/materials/10\u5F20.mat"
+    name: "10\u5F20"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1297
+    favorite: 0
+  - guid: 8d8d0c43f7b4fc8419dce0650bc435e5
+    path: Assets/MoShi/Common/materials/FX_shunzi_pai_6.mat
+    name: FX_shunzi_pai_6
+    kind: 2
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: URP/Effect/Additive
+    fileSize: 984
+    favorite: 0
+  - guid: 9c40447c8b816c346a65420b995613ff
+    path: Assets/MoShi/Common/materials/FX_shunzi_pai_7.mat
+    name: FX_shunzi_pai_7
+    kind: 2
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: URP/Effect/Additive
+    fileSize: 984
+    favorite: 0
+  - guid: c1f7bf240eefe27458db90c3de709614
+    path: Assets/MoShi/Common/materials/FX_shunzi_pai_8.mat
+    name: FX_shunzi_pai_8
+    kind: 2
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: URP/Effect/Additive
+    fileSize: 1025
+    favorite: 0
+  - guid: 743c713f69081b0458025855ef61d60d
+    path: Assets/MoShi/Common/materials/FX_shunzi_pai_9.mat
+    name: FX_shunzi_pai_9
+    kind: 2
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: URP/Effect/Additive
+    fileSize: 984
+    favorite: 0
+  - guid: 6bc70ee37b71033479133f21c2e426b8
+    path: Assets/MoShi/Common/materials/FX_shunzi_pai_10.mat
+    name: FX_shunzi_pai_10
+    kind: 2
+    mainTag: "\u52A0\u6CD5"
+    tags:
+    - "\u52A0\u6CD5"
+    shaderName: URP/Effect/Additive
+    fileSize: 985
+    favorite: 0
+  - guid: 1b5a79c0a75a6594786827150ba9e3f4
+    path: "Assets/MoShi/Common/materials/\u4E24\u5F20.mat"
+    name: "\u4E24\u5F20"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1301
+    favorite: 0
+  - guid: 57181da704d755044968c10ce052f068
+    path: "Assets/MoShi/Common/materials/\u5927\u738B.mat"
+    name: "\u5927\u738B"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/UniversalEffectNew
+    fileSize: 3462
+    favorite: 0
+  - guid: bf3becb83b07a3c4a94ecca37635fc50
+    path: "Assets/MoShi/Common/materials/\u5C0F\u738B.mat"
+    name: "\u5C0F\u738B"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/UniversalEffectNew
+    fileSize: 3462
+    favorite: 0
+  - guid: cba2d7d79e61cff4695017f1bf619b17
+    path: "Assets/MoShi/Common/materials/\u65B9\u5757.mat"
+    name: "\u65B9\u5757"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1301
+    favorite: 0
+  - guid: 8160d3b4416015c4eb7d2ac32ffd82c3
+    path: "Assets/MoShi/Common/materials/\u6885\u82B1.mat"
+    name: "\u6885\u82B1"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1301
+    favorite: 0
+  - guid: c120074165e3001429dc2fae754fe1d4
+    path: "Assets/MoShi/Common/materials/\u793E\u533A\u5927\u5BCC\u7FC1\u5217\u8868.mat"
+    name: "\u793E\u533A\u5927\u5BCC\u7FC1\u5217\u8868"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1331
+    favorite: 0
+  - guid: 8c64f3f3d756a5e4aa6fafc99ab6669d
+    path: "Assets/MoShi/Common/materials/\u793E\u533A\u5927\u5BCC\u7FC1\u91D1\u5E01.mat"
+    name: "\u793E\u533A\u5927\u5BCC\u7FC1\u91D1\u5E01"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1331
+    favorite: 0
+  - guid: 9e1cfdf24c727ac4aa8da60e225a9157
+    path: "Assets/MoShi/Common/materials/\u7EA2\u6843.mat"
+    name: "\u7EA2\u6843"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1301
+    favorite: 0
+  - guid: 96f46ea4b89c8e94eb5bda6742ad45e4
+    path: "Assets/MoShi/Common/materials/\u89C6\u9891\u80CC\u666F.mat"
+    name: "\u89C6\u9891\u80CC\u666F"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Scene/Effect/Universal Effect
+    fileSize: 3441
+    favorite: 0
+  - guid: 01d3de2a86287cd409ee3ba432fa6476
+    path: "Assets/MoShi/Common/materials/\u9ED1\u6843.mat"
+    name: "\u9ED1\u6843"
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/EffectNew/BlendNew
+    fileSize: 1301
+    favorite: 0
+  - guid: d9afd8aaf18e9e24fb1ab615fb2e3731
+    path: Assets/MoShi/Common/Mesh/fx_wrj_deng.FBX
+    name: fx_wrj_deng
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Scene/Unlit
+    fileSize: 26080
+    favorite: 0
+  - guid: cc08c0c7ba170a647ac13d0db26e2c32
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_BlueBurst_Flash_1 1.mat
+    name: FX_BlueBurst_Flash_1 1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2256
+    favorite: 0
+  - guid: 95fbeccbefe14ef4e85d843f824979ea
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_BlueBurst_Flash_1.mat
+    name: FX_BlueBurst_Flash_1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2254
+    favorite: 0
+  - guid: e8b90baf0522c0e4e8f331394536818b
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_BlueBurst_Spark_2 1.mat
+    name: FX_BlueBurst_Spark_2 1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2254
+    favorite: 0
+  - guid: dbae86bcf6e44fe45a74d3305b0572ae
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_BlueBurst_Spark_2.mat
+    name: FX_BlueBurst_Spark_2
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2252
+    favorite: 0
+  - guid: 3e371250870771f468cb6f1183460f5c
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_DaoguangPurple_Flash_1.mat
+    name: FX_DaoguangPurple_Flash_1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2275
+    favorite: 0
+  - guid: a5fa3a318abe656449a4511a9843d71e
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_DaoguangPurple_Spark_2.mat
+    name: FX_DaoguangPurple_Spark_2
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2260
+    favorite: 0
+  - guid: f8e098b89cd6eb340a814071ab02a292
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_TestBlue_Flash_1.mat
+    name: FX_TestBlue_Flash_1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2254
+    favorite: 0
+  - guid: 51f91298091c8fc4488ed39d61edf977
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_TestBlue_Spark_2.mat
+    name: FX_TestBlue_Spark_2
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2252
+    favorite: 0
+  - guid: cb6568dff96b0a8469cdc994f10f502b
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_TestHongse_Flash_1.mat
+    name: FX_TestHongse_Flash_1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2256
+    favorite: 0
+  - guid: 6ac6badfdf4366e43b5dc0a3785a77cb
+    path: Assets/MoShi/GeneratedVFX/Materials/FX_TestHongse_Spark_2.mat
+    name: FX_TestHongse_Spark_2
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: Universal Render Pipeline/Particles/Unlit
+    fileSize: 2256
+    favorite: 0
+  - guid: 6cf32caad34b6014cac20891e961e54f
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Material/fx_sunce_01.mat"
+    name: fx_sunce_01
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Effect/Universal Effect
+    fileSize: 3443
+    favorite: 0
+  - guid: 69e13d0c371266542a8b199f88a39794
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Material/fx_sunce_02 1.mat"
+    name: fx_sunce_02 1
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Scene/Effect/Universal Effect
+    fileSize: 3526
+    favorite: 0
+  - guid: a8bb6f27405ee9748a933fb9234487a9
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Material/fx_sunce_02.mat"
+    name: fx_sunce_02
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Effect/Universal Effect
+    fileSize: 3364
+    favorite: 0
+  - guid: 4eb7590aceb70bd47b963086b4c3e5b7
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Material/fx_sunce_03.mat"
+    name: fx_sunce_03
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Effect/Universal Effect
+    fileSize: 3297
+    favorite: 0
+  - guid: 303f16c5bf4a6a742b1057f486e7d75c
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Material/fx_sunce_04.mat"
+    name: fx_sunce_04
+    kind: 2
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: URP/Effect/Universal Effect
+    fileSize: 3158
+    favorite: 0
+  - guid: 8ae2173b9552d404f9a52353ca909ec8
+    path: Assets/MoShi/Common/Texture/bg001(1)(1).jpg
+    name: bg001(1)(1)
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 480926
+    favorite: 0
+  - guid: 798c89660a1f7184ab806272ebf0c02f
+    path: Assets/MoShi/Common/Texture/pai1.png
+    name: pai1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 59847
+    favorite: 0
+  - guid: 9034abf9cd7b49b4183c61c8b193ed84
+    path: Assets/MoShi/Common/Texture/pai2.png
+    name: pai2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 46249
+    favorite: 0
+  - guid: 079ae1a9790dc2a409eb912b46dca059
+    path: Assets/MoShi/Common/Texture/pai3.png
+    name: pai3
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 20868
+    favorite: 0
+  - guid: a5422b58808908c4db4f83cb0aa3d4eb
+    path: Assets/MoShi/Common/Texture/pai6.png
+    name: pai6
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 20405
+    favorite: 0
+  - guid: dc93e8379610d074284809019dc6e655
+    path: Assets/MoShi/Common/Texture/pai7.png
+    name: pai7
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 17033
+    favorite: 0
+  - guid: 13ab7bc54c760a94a92aa1dd98ec8124
+    path: Assets/MoShi/Common/Texture/pai8.png
+    name: pai8
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 21529
+    favorite: 0
+  - guid: 588fd4bc48b78db469894c71cf647168
+    path: Assets/MoShi/Common/Texture/pai9.png
+    name: pai9
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 20567
+    favorite: 0
+  - guid: 5efc200027fb20640a06e4591ad70b04
+    path: Assets/MoShi/Common/Texture/pai10.png
+    name: pai10
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 21784
+    favorite: 0
+  - guid: 2f13c3a71c55fba4a9e4acf68fc7fac8
+    path: "Assets/MoShi/Common/Texture/UI_\u4E2A\u4EBA\u4FE1\u606F\u9762\u677F1.png"
+    name: "UI_\u4E2A\u4EBA\u4FE1\u606F\u9762\u677F1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 55035
+    favorite: 0
+  - guid: a93448b047972444a81f094fc0a2c138
+    path: "Assets/MoShi/Common/Texture/UI_\u4E2A\u4EBA\u4FE1\u606F\u9762\u677F2.png"
+    name: "UI_\u4E2A\u4EBA\u4FE1\u606F\u9762\u677F2"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1201908
+    favorite: 0
+  - guid: 1b6fedb9cd00f0645b62d9254230fb6b
+    path: "Assets/MoShi/Common/Texture/UI_\u4E92\u52A8\u7A97\u53E31.png"
+    name: "UI_\u4E92\u52A8\u7A97\u53E31"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 71635
+    favorite: 0
+  - guid: 6846a22d044ce3144872eaae3b691f96
+    path: "Assets/MoShi/Common/Texture/UI_\u4E92\u52A8\u7A97\u53E32.png"
+    name: "UI_\u4E92\u52A8\u7A97\u53E32"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1111120
+    favorite: 0
+  - guid: 9cb4904de54eaaa4380ebc49f3478260
+    path: "Assets/MoShi/Common/Texture/ui_\u597D\u53CB1.png"
+    name: "ui_\u597D\u53CB1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 384523
+    favorite: 0
+  - guid: 45968bfaf8029244eb3dcf1bc9f3cf23
+    path: "Assets/MoShi/Common/Texture/ui_\u597D\u53CB2.png"
+    name: "ui_\u597D\u53CB2"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 717842
+    favorite: 0
+  - guid: 7f6ed49b0d44b824b8a72dd11fd8a8dc
+    path: "Assets/MoShi/Common/Texture/UI_\u6392\u884C\u699C1.png"
+    name: "UI_\u6392\u884C\u699C1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 538147
+    favorite: 0
+  - guid: 228fb41db23182944993b62c868c960a
+    path: "Assets/MoShi/Common/Texture/UI_\u6392\u884C\u699C2.png"
+    name: "UI_\u6392\u884C\u699C2"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1714656
+    favorite: 0
+  - guid: 9aa020798538eb8439ca77461c8592ca
+    path: "Assets/MoShi/Common/Texture/UI_\u90AE\u4EF6\u4E2D\u5FC31.png"
+    name: "UI_\u90AE\u4EF6\u4E2D\u5FC31"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 272373
+    favorite: 0
+  - guid: 49d7bbf03f10d514d887c349db721ce5
+    path: "Assets/MoShi/Common/Texture/UI_\u90AE\u4EF6\u4E2D\u5FC32.png"
+    name: "UI_\u90AE\u4EF6\u4E2D\u5FC32"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1002673
+    favorite: 0
+  - guid: e4fca8ab6e7e4af42afa30f2947338b9
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A601_\u5927\u738B.png"
+    name: "\u4E00\u68A601_\u5927\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 83505
+    favorite: 0
+  - guid: 11da0e0826b84654daaf147f582aeb00
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A602_\u5C0F\u738B.png"
+    name: "\u4E00\u68A602_\u5C0F\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 80917
+    favorite: 0
+  - guid: d3937d92bf9e2d94bbfc46eae4b83d61
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A603_\u65B9\u5757.png"
+    name: "\u4E00\u68A603_\u65B9\u5757"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 25970
+    favorite: 0
+  - guid: 0cf3880e2c383154a8a24180e73ffa35
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A604_\u6885\u82B1.png"
+    name: "\u4E00\u68A604_\u6885\u82B1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 31490
+    favorite: 0
+  - guid: 8cf6ced685dbe2446ba85ea525454741
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A605_\u7EA2\u6843.png"
+    name: "\u4E00\u68A605_\u7EA2\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 28028
+    favorite: 0
+  - guid: 124df7319960fd64aab6a658ee047d51
+    path: "Assets/MoShi/Common/Texture/\u4E00\u68A606_\u9ED1\u6843.png"
+    name: "\u4E00\u68A606_\u9ED1\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 27910
+    favorite: 0
+  - guid: 6b240c52c18852c4f910fc0d59aeec9a
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3801_\u5927\u738B.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3801_\u5927\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 89492
+    favorite: 0
+  - guid: 77d6fc3867e946a41b4c2de88534477b
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3802_\u5C0F\u738B.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3802_\u5C0F\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 90959
+    favorite: 0
+  - guid: 9d4f819e11eadae41bdd021678e68763
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3803_\u65B9\u5757.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3803_\u65B9\u5757"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 30677
+    favorite: 0
+  - guid: bec3893bba353ac45b578b24fb618757
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3804_\u6885\u82B1.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3804_\u6885\u82B1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 34623
+    favorite: 0
+  - guid: 6a98ab6398ca2b8428d3971c377f16fb
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3805_\u7EA2\u6843.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3805_\u7EA2\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 30747
+    favorite: 0
+  - guid: 740dc7599b181a44ab54351047f9193c
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E3806_\u9ED1\u6843.png"
+    name: "\u5947\u5E7B\u6F2B\u6E3806_\u9ED1\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 32554
+    favorite: 0
+  - guid: 8b419c466aba3184caacce0e1202daab
+    path: "Assets/MoShi/Common/Texture/\u5947\u5E7B\u6F2B\u6E38\u89C6\u9891.png"
+    name: "\u5947\u5E7B\u6F2B\u6E38\u89C6\u9891"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 129868
+    favorite: 0
+  - guid: 00e16d1543fa25841b11e60ac2e6fe1e
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966201_\u5927\u738B.png"
+    name: "\u5B66\u966201_\u5927\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 86927
+    favorite: 0
+  - guid: 82848bd2bbd1b614f96a49520d7b755d
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966202_\u5C0F\u738B.png"
+    name: "\u5B66\u966202_\u5C0F\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 83798
+    favorite: 0
+  - guid: cd58ca5d313e577438e7bed7d1945568
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966203_\u65B9\u5757.png"
+    name: "\u5B66\u966203_\u65B9\u5757"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 27524
+    favorite: 0
+  - guid: 2359696595eff0346a1ea74d43979656
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966204_\u6885\u82B1.png"
+    name: "\u5B66\u966204_\u6885\u82B1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 30783
+    favorite: 0
+  - guid: 19dbc42e3dc66cc45bb5a45d65ee79bc
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966205_\u7EA2\u6843.png"
+    name: "\u5B66\u966205_\u7EA2\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 28440
+    favorite: 0
+  - guid: bb70dca1fb60e974f9b4939f7106bd22
+    path: "Assets/MoShi/Common/Texture/\u5B66\u966206_\u9ED1\u6843.png"
+    name: "\u5B66\u966206_\u9ED1\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 27769
+    favorite: 0
+  - guid: 23003a529cb71384b9de621974282589
+    path: "Assets/MoShi/Common/Texture/\u793E\u4EA4\u5927\u5BCC\u7FC1\u5165\u53E3.png"
+    name: "\u793E\u4EA4\u5927\u5BCC\u7FC1\u5165\u53E3"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 1674382
+    favorite: 0
+  - guid: 5be2962e1a20f74478ad5680d7a39336
+    path: "Assets/MoShi/Common/Texture/\u793E\u533A\u5927\u5BCC\u7FC1\u5217\u8868.png"
+    name: "\u793E\u533A\u5927\u5BCC\u7FC1\u5217\u8868"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 77739
+    favorite: 0
+  - guid: 051be34e853c3ac42bd7e0dc56c3e087
+    path: "Assets/MoShi/Common/Texture/\u793E\u533A\u5927\u5BCC\u7FC1\u91D1\u5E01.png"
+    name: "\u793E\u533A\u5927\u5BCC\u7FC1\u91D1\u5E01"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 6214
+    favorite: 0
+  - guid: 480b212337db2a04098d920282048acc
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F01_\u5927\u738B.png"
+    name: "\u9A6C\u620F01_\u5927\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 80209
+    favorite: 0
+  - guid: 46d26966d580f3b4a9a4f7441eaa3de6
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F02_\u5C0F\u738B.png"
+    name: "\u9A6C\u620F02_\u5C0F\u738B"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 75971
+    favorite: 0
+  - guid: e41b655726fae7644bbb995b70130673
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F03_\u65B9\u5757.png"
+    name: "\u9A6C\u620F03_\u65B9\u5757"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 23607
+    favorite: 0
+  - guid: 8b2d1b490c9613d44b3ce6066caa7b89
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F04_\u6885\u82B1.png"
+    name: "\u9A6C\u620F04_\u6885\u82B1"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 22979
+    favorite: 0
+  - guid: 939c9bfb05df3bd49ac910d91914c59b
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F05_\u7EA2\u6843.png"
+    name: "\u9A6C\u620F05_\u7EA2\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 23162
+    favorite: 0
+  - guid: 3ec1f30e1d1a84246b3bd28e4a9ac2f3
+    path: "Assets/MoShi/Common/Texture/\u9A6C\u620F06_\u9ED1\u6843.png"
+    name: "\u9A6C\u620F06_\u9ED1\u6843"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 20374
+    favorite: 0
+  - guid: 27132d99a1f1fda4f95aa1a8be273354
+    path: "Assets/MoShi/Common/Texture/\u9B54\u6CD5\u5B66\u9662\u89C6\u9891.png"
+    name: "\u9B54\u6CD5\u5B66\u9662\u89C6\u9891"
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 161944
+    favorite: 0
+  - guid: f557ed292d8d1354bb0c18e5c6599ed2
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/1-1.png"
+    name: 1-1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 22054
+    favorite: 0
+  - guid: c9f120f798dccf643b3de15d27eb6635
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/1-2.png"
+    name: 1-2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 25876
+    favorite: 0
+  - guid: 5f808bc8d9826e94c8400dfb42aea6a8
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/2-1.png"
+    name: 2-1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 22054
+    favorite: 0
+  - guid: 2fdd5d77d526afc439b50fc98719fd71
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/2-2.png"
+    name: 2-2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 58681
+    favorite: 0
+  - guid: fb66bb489aa81fe4e800dcb400990f7f
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/3-1.png"
+    name: 3-1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 7016
+    favorite: 0
+  - guid: 374840b917351d847a2b27bb6608aef7
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/3-2.png"
+    name: 3-2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 22054
+    favorite: 0
+  - guid: f1a47a1be66b0d642ab89beea034d589
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/4-1.png"
+    name: 4-1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 65068
+    favorite: 0
+  - guid: 0dd0d7ff6bfff034ea5bac34b2a0dae2
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/4-2.png"
+    name: 4-2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 11443
+    favorite: 0
+  - guid: f674a914a8bc3ef439783a34adae72cb
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/5-1.png"
+    name: 5-1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 62982
+    favorite: 0
+  - guid: f42ffb41d6d022241b50de3e32c26277
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/5-2.png"
+    name: 5-2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 15312
+    favorite: 0
+  - guid: 4973ca915adcc0e4b854d846af11a456
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/5-3.png"
+    name: 5-3
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 12790
+    favorite: 0
+  - guid: 5fde67ccdf3f9ca479b7a909bff5ac40
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/colour__43_002.png"
+    name: colour__43_002
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 11598
+    favorite: 0
+  - guid: a1ee97710e1140c44b003defddc2a238
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/fire1.png"
+    name: fire1
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 34110
+    favorite: 0
+  - guid: c8117f7372a1dcd4bbfd55e4fec8d12d
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/fire2.png"
+    name: fire2
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 20753
+    favorite: 0
+  - guid: 96df8d10f92e147459e2e07095e164a2
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/fire3.png"
+    name: fire3
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 14074
+    favorite: 0
+  - guid: 7a4c99579e5f5b84fa4826dd00f4b406
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Texture/niu.png"
+    name: niu
+    kind: 3
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 6410
+    favorite: 0
+  - guid: 85a1833d737b50d4e8a091e8c9a2062e
+    path: Assets/MoShi/Common/Mesh/Cshilujing.FBX
+    name: Cshilujing
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 62944
+    favorite: 0
+  - guid: d9afd8aaf18e9e24fb1ab615fb2e3731
+    path: Assets/MoShi/Common/Mesh/fx_wrj_deng.FBX
+    name: fx_wrj_deng
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 26080
+    favorite: 0
+  - guid: 4e6020ca50c047d0b4a1ae517bafb9cc
+    path: Assets/MoShi/Common/Mesh/Plane001.FBX
+    name: Plane001
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 13840
+    favorite: 0
+  - guid: 3857f60932f03fb46812b8f625e3308b
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Mesh/fx_Plane_01.FBX"
+    name: fx_Plane_01
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 37392
+    favorite: 0
+  - guid: a8a6b08abc88a7145b14b47b0dafbcbc
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Mesh/fx_Plane_02.FBX"
+    name: fx_Plane_02
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 49088
+    favorite: 0
+  - guid: 235fe9139ed56c943a56a73c0ef6dc72
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/Mesh/\u5B59\u7B56\u706B\u7130\u6A21\u578B\u8D34\u56FE\u6D4B\u8BD5.FBX"
+    name: "\u5B59\u7B56\u706B\u7130\u6A21\u578B\u8D34\u56FE\u6D4B\u8BD5"
+    kind: 4
+    mainTag: "\u672A\u5206\u7C7B"
+    tags: []
+    shaderName: 
+    fileSize: 160592
+    favorite: 0
+  - guid: edef594f0dc76e14d9c6b2ace20460e0
+    path: Assets/Effect/FX_Common/Shader/VFX9.prefab
+    name: VFX9
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 2884921
+    favorite: 0
+  - guid: c4a6d38110e22a04a8c3f3cb80341a1b
+    path: Assets/MoShi/Anim_pai_liandui/Prefab/pai_liandui.prefab
+    name: pai_liandui
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 22259
+    favorite: 0
+  - guid: bd6472b75d4abb74299149aa81d3a9a0
+    path: Assets/MoShi/Anim_pai_Shunzi/Prefab/pai_shunzi.prefab
+    name: pai_shunzi
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 15720
+    favorite: 0
+  - guid: 67957863f8384cf45a24e4de90382765
+    path: Assets/MoShi/Avatar/Avatar1.prefab
+    name: Avatar1
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319278
+    favorite: 0
+  - guid: 0c3b52cfb086d9740832a689c9c547c6
+    path: Assets/MoShi/Avatar/Avatar2.prefab
+    name: Avatar2
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319278
+    favorite: 0
+  - guid: 57cc9b60b29ac5d47a690e060041764d
+    path: Assets/MoShi/Avatar/Avatar3.prefab
+    name: Avatar3
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319277
+    favorite: 0
+  - guid: ec0e4b97fc8b4e34ea2b36563432e5be
+    path: Assets/MoShi/Avatar/Avatar4.prefab
+    name: Avatar4
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319019
+    favorite: 0
+  - guid: 165ba793ca1f72648a0b68575e1ce00a
+    path: Assets/MoShi/Avatar/Avatar5.prefab
+    name: Avatar5
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319648
+    favorite: 0
+  - guid: e452bd7ff6bc7e04caa4464a5c0c5a0d
+    path: Assets/MoShi/Avatar/shengli_Avatar1.prefab
+    name: shengli_Avatar1
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319286
+    favorite: 0
+  - guid: 4771d5bbb16922a4d8d39bf8ad2765cb
+    path: Assets/MoShi/Avatar/shengli_Avatar2.prefab
+    name: shengli_Avatar2
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319286
+    favorite: 0
+  - guid: 7d0e52cda9da6264a9bfdb917309003b
+    path: Assets/MoShi/Avatar/shengli_Avatar3.prefab
+    name: shengli_Avatar3
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319248
+    favorite: 0
+  - guid: 633a4118a1832f84f9f5391d3d02c74a
+    path: Assets/MoShi/Avatar/shengli_Avatar4.prefab
+    name: shengli_Avatar4
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319286
+    favorite: 0
+  - guid: 5a838666dc796a74bb049f9c458e5064
+    path: Assets/MoShi/Avatar/shengli_Avatar5.prefab
+    name: shengli_Avatar5
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 319397
+    favorite: 0
+  - guid: f150e115826e0b94391fcc42bb9ec7c8
+    path: Assets/MoShi/Common/Prefab/Box.prefab
+    name: Box
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 3224
+    favorite: 0
+  - guid: 87c675fe966a60843bbe07bfdf7e2853
+    path: Assets/MoShi/Common/Prefab/O_ResultSceneSanYuan_yj.prefab
+    name: O_ResultSceneSanYuan_yj
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 1851263
+    favorite: 0
+  - guid: ed969d2650503144381ce3d190fe2294
+    path: Assets/MoShi/Common/Prefab/Panel_ResultSanyuan_yejun.prefab
+    name: Panel_ResultSanyuan_yejun
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 339815
+    favorite: 0
+  - guid: 41f8e84c5f78f1749b81e7617a675739
+    path: Assets/MoShi/GeneratedVFX/Prefabs/FX_BlueBurst 1.prefab
+    name: FX_BlueBurst 1
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 236322
+    favorite: 0
+  - guid: 519edbdc16daff449b35797b505524a1
+    path: Assets/MoShi/GeneratedVFX/Prefabs/FX_BlueBurst.prefab
+    name: FX_BlueBurst
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 236318
+    favorite: 0
+  - guid: 398c66009d908fc408459e7fe2d4efab
+    path: Assets/MoShi/GeneratedVFX/Prefabs/FX_DaoguangPurple.prefab
+    name: FX_DaoguangPurple
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 236330
+    favorite: 0
+  - guid: 1594801eac330d447980bab481ccd4ad
+    path: Assets/MoShi/GeneratedVFX/Prefabs/FX_TestBlue.prefab
+    name: FX_TestBlue
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 236317
+    favorite: 0
+  - guid: 321294548c80ec84c8813adaec6ca557
+    path: Assets/MoShi/GeneratedVFX/Prefabs/FX_TestHongse.prefab
+    name: FX_TestHongse
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 236316
+    favorite: 0
+  - guid: 56f6dc656cef718449142bb52cf2b714
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_3D_\u724C\u9762\u5C55\u793A.prefab"
+    name: "PaiMian_3D_\u724C\u9762\u5C55\u793A"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 142709
+    favorite: 0
+  - guid: 20c22dabdd7467f468d5d9d4fd497ccc
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_1\u5F20\u51FA\u724C.prefab"
+    name: "PaiMian_UI_1\u5F20\u51FA\u724C"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 125555
+    favorite: 0
+  - guid: 494b339a12f490d43b1ccc0acc80483e
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_2\u5F20\u51FA\u724C.prefab"
+    name: "PaiMian_UI_2\u5F20\u51FA\u724C"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 129602
+    favorite: 0
+  - guid: 2a7df8f2d97878b41b6c312519697458
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_3D\u5C40\u5185\u573A\u666F\u5C55\u793A.prefab"
+    name: "PaiMian_UI_3D\u5C40\u5185\u573A\u666F\u5C55\u793A"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 25928
+    favorite: 0
+  - guid: 9a1d34df5a5a9f04b9ca40c332856d96
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_4\u5F20\u51FA\u724C.prefab"
+    name: "PaiMian_UI_4\u5F20\u51FA\u724C"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 137695
+    favorite: 0
+  - guid: 9578bdafe16867a47887940d3f5c2799
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_10\u5F20\u51FA\u724C.prefab"
+    name: "PaiMian_UI_10\u5F20\u51FA\u724C"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 161964
+    favorite: 0
+  - guid: b58c7e21a3b4be240a736b3fa52e4c19
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_\u539F\u753B\u6807\u51C6.prefab"
+    name: "PaiMian_UI_\u539F\u753B\u6807\u51C6"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 25424
+    favorite: 0
+  - guid: c23fd7d4388c3544d9d29cff37f06671
+    path: "Assets/MoShi/PaiMian/Prefab/PaiMian_UI_\u89C6\u9891\u6807\u51C6.prefab"
+    name: "PaiMian_UI_\u89C6\u9891\u6807\u51C6"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 39872
+    favorite: 0
+  - guid: 3191eb0e2ea5d524db871de1a1e242a5
+    path: "Assets/MoShi/Timeline/spine\u5FAA\u73AF\u64AD\u653E.prefab"
+    name: "spine\u5FAA\u73AF\u64AD\u653E"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 2730
+    favorite: 0
+  - guid: e70b5f2459ebc974dbd8437d18da8b72
+    path: "Assets/MoShi/Timeline/\u724C\u684C\u9884\u89C8Timeline.prefab"
+    name: "\u724C\u684C\u9884\u89C8Timeline"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 1632
+    favorite: 0
+  - guid: 67c4371e148a71643a27a8b603925c77
+    path: "Assets/MoShi/Timeline/\u793E\u4EA4\u5927\u5BCC\u7FC1Timeline.prefab"
+    name: "\u793E\u4EA4\u5927\u5BCC\u7FC1Timeline"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 320242
+    favorite: 0
+  - guid: f73fcef0f69624d4eab567baae310b04
+    path: "Assets/MoShi/Timeline/\u89C6\u9891\u80CC\u666F.prefab"
+    name: "\u89C6\u9891\u80CC\u666F"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 2391
+    favorite: 0
+  - guid: a0c13a96faff98f49ab9214f1addae62
+    path: "Assets/MoShi/Timeline/\u90E8\u4EF6\u5C55\u793ATimeline-1.prefab"
+    name: "\u90E8\u4EF6\u5C55\u793ATimeline-1"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 4124
+    favorite: 0
+  - guid: db2594e1b6d649f41ac79ef639b024d4
+    path: "Assets/MoShi/Timeline/\u90E8\u4EF6\u5C55\u793ATimeline-2.prefab"
+    name: "\u90E8\u4EF6\u5C55\u793ATimeline-2"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 6495
+    favorite: 0
+  - guid: 04c18732ead7c8f42879c1877d6f495b
+    path: "Assets/MoShi/Timeline/\u90E8\u4EF6\u5C55\u793ATimeline-3.prefab"
+    name: "\u90E8\u4EF6\u5C55\u793ATimeline-3"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 8832
+    favorite: 0
+  - guid: 15cbd61d4aa9f0a488c060916384d30f
+    path: "Assets/MoShi/\u5B59\u7B56\u706B\u7130/prefab/fx_\u5B59\u7B56\u706B.prefab"
+    name: "fx_\u5B59\u7B56\u706B"
+    kind: 5
+    mainTag: Prefab
+    tags: []
+    shaderName: 
+    fileSize: 354657
+    favorite: 0
+  lastScanTime: 2026-05-27 20:13:07

@@ -1,0 +1,51 @@
+{
+    "version": "1.0",
+    "commandId": "cmd_20260528_103155761",
+    "commandType": "modify_selected_particle",
+    "targetMode": "selected",
+    "targetPath": "",
+    "outputFolder": "Assets/MoShi/GeneratedVFX",
+    "createdAt": "2026-05-28T10:31:55",
+    "payload": {
+        "message": "",
+        "includeComponents": true,
+        "includeAssetPath": true,
+        "includeHierarchyPath": true,
+        "vfxName": "FX_CodeBuddyVFX",
+        "displayName": "CodeBuddy特效",
+        "vfxType": "burst",
+        "style": "normal",
+        "duration": 0.6000000238418579,
+        "loop": false,
+        "colorPalette": [
+            "#4AA8FF",
+            "#7B3DFF"
+        ],
+        "scale": 1.0,
+        "sortingOrder": 0,
+        "layers": [],
+        "modifyMode": "relative",
+        "target": "selected",
+        "adjustments": {
+            "brightnessMultiplier": 1.25,
+            "particleCountMultiplier": 0.8500000238418579,
+            "durationMultiplier": 0.8500000238418579,
+            "sizeMultiplier": 1.0499999523162842,
+            "speedMultiplier": 0.949999988079071,
+            "colorShift": {
+                "hueOffset": 0.0,
+                "saturationMultiplier": 1.0,
+                "valueMultiplier": 1.0
+            }
+        },
+        "play": true,
+        "restart": true,
+        "capturePreview": false
+    },
+    "options": {
+        "previewAfterExecute": true,
+        "savePrefab": true,
+        "backupBeforeModify": true,
+        "timeoutSeconds": 30
+    }
+}
